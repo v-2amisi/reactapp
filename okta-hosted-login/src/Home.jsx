@@ -99,18 +99,6 @@ const Home = () => {
           </p>
           <div id="res-data"><pre>{JSON.stringify(data)}</pre>
             </div>
-          <p>Currently this application is a stand-alone front end application.  At this point you can use the access token to authenticate yourself against resource servers that you control.</p>
-          <p>This sample is designed to work with one of our resource server examples.  To see access token authentication in action, please download one of these resource server examples:</p>
-          <ul>
-            {resourceServerExamples.map((example) => <li key={example.url}><a href={example.url}>{example.label}</a></li>)}
-          </ul>
-          <p>
-            Once you have downloaded and started the example resource server, you can visit the
-            {' '}
-            <a href="/messages">My Messages</a>
-            {' '}
-            page to see the authentication process in action.
-          </p>
         </div>
         )}
 
@@ -130,6 +118,8 @@ const Home = () => {
             After you authenticate, you will be logged in to this application with an ID token and access token. These tokens will be stored in local storage and can be retrieved at a later time.
           </p>
           <Button id="login-button" primary onClick={login}>Login</Button>
+          <Button id="api-button" primary onClick={callProtectedAPi}>Get API Data</Button>
+          <div id="res-data"><pre>{JSON.stringify(data)}</pre></div>
         </div>
         )}
 
