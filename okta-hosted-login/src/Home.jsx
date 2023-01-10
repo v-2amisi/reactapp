@@ -60,7 +60,7 @@ const Home = () => {
    const response=  await axios.get("https://npapi.discounttire.com/api/dev/omnipos/exp/v1/ping",{
     headers:{
         'Authorization': `Bearer ${token}`,
-        'Access-Control-Allow-Origin': 'https://reactsampleappdt.herokuapp.com',
+        'Access-Control-Allow-Origin': '*',
         'dtrequestidentifier': '83385c92-4282-4476-91ff-63bc36349c91',
         'dtSourceSystem': 'local'
     }
