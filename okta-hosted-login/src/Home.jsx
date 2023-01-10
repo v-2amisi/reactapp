@@ -49,6 +49,20 @@ const Home = () => {
       url: 'https://github.com/okta/samples-aspnetcore/tree/master/samples-aspnetcore-3x/resource-server',
     },
   ];
+  
+  async function callProtectedAPi(){
+  const token = authState.accessToken?authState.accessToken.accessToken:"";
+
+  
+   const response=  await axios.get("https://npapi.discounttire.com/api/dev/omnipos/exp/v1/ping",{
+    headers:{
+        'Authorization': `Bearer ${token}`,
+        'Access-Control-Allow-Origin': 'https://reactsampleappdt.herokuapp.com'
+    }
+  })
+        .then(response=>setData(response.data))
+        .catch(error=>setData(error.message))
+  }
 
   if (!authState) {
     return (
@@ -80,7 +94,11 @@ const Home = () => {
             {' '}
             page to take a look inside the ID token.
           </p>
-          <h3>Next Steps</h3>
+          <p>
+          <Button id="api-button" primary onClick={callProtectedAPi}>Get API Data</Button>
+          </p>
+          <div id="res-data"><pre>{JSON.stringify(data)}</pre>
+            </div>
           <p>Currently this application is a stand-alone front end application.  At this point you can use the access token to authenticate yourself against resource servers that you control.</p>
           <p>This sample is designed to work with one of our resource server examples.  To see access token authentication in action, please download one of these resource server examples:</p>
           <ul>
