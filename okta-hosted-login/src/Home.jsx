@@ -78,7 +78,7 @@ const Home = () => {
   params.append('accept', 'application/json')
   params.append('content-type', 'application/x-www-form-urlencoded')
   params.append('redirect_uri', 'https://reactsampleappdt.herokuapp.com/okta-hosted-login/login/callback')
-  params.append('scope', 'offline_access%20openid%20profile')
+  params.append('scope', 'offline_access openid profile')
   params.append('refresh_token', `${refreshToken}`)
   params.append('grant_type', 'refresh_token')
     
