@@ -57,7 +57,7 @@ const Home = () => {
   const token = authState.accessToken?authState.accessToken.accessToken:"";
 
   
-   const response=  await axios.get("https://npapi.discounttire.com/api/dev/omnipos/exp/v1/ping",{
+   const response1=  await axios.get("https://npapi.discounttire.com/api/dev/omnipos/exp/v1/ping",{
     headers:{
         'Authorization': `Bearer ${token}`,
         'Access-Control-Allow-Origin': 'https://reactsampleappdt.herokuapp.com/',
@@ -65,7 +65,7 @@ const Home = () => {
         'dtSourceSystem': 'local'
     }
   })
-        .then(response=>setData(response.data))
+        .then(response1=>setData(response1.data))
         .catch(error=>setData(error.message))
   }
   
@@ -90,8 +90,8 @@ const Home = () => {
     
 
   
-   const response=  await axios.post("https://discounttire-dev.oktapreview.com/oauth2/auss0d6l6zGni1PNd0h7/v1/token", params, config)
-        .then(response=>setData(response.data))
+   const response2=  await axios.post("https://discounttire-dev.oktapreview.com/oauth2/auss0d6l6zGni1PNd0h7/v1/token", params, config)
+        .then(response2=>setData(response2.data))
         .catch(error=>setData(error.message))
   }
 
@@ -156,6 +156,11 @@ const Home = () => {
           <Button id="login-button" primary onClick={login}>Login</Button>
           <Button id="api-button" primary onClick={callProtectedAPi}>Get API Data</Button>
           <div id="res-data"><pre>{JSON.stringify(data)}</pre></div>
+         
+          <Button id="refresh-token" primary onClick={refreshToken}>Refresh Token</Button>
+         
+          <div id="token-data"><pre>{JSON.stringify(data)}</pre>
+            </div>
         </div>
         )}
 
