@@ -68,6 +68,26 @@ const Home = () => {
         .then(response=>setData(response.data))
         .catch(error=>setData(error.message))
   }
+  
+  
+  async function refreshToken(){
+  const refreshToken = authState.refreshToken?authState.refreshToken.refreshToken:"";
+
+  
+   const response=  await axios.post("https://discounttire-dev.oktapreview.com/oauth2/auss0d6l6zGni1PNd0h7/v1/token",{
+    headers:{
+        'clientId': '0oa1hwgaurigdH8sB0h8',
+        'accept': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
+        'grant-type': 'refresh_token',
+        'redirect_uri': 'https://reactsampleappdt.herokuapp.com/okta-hosted-login/login/callback',
+        'scope': 'offline_access%20openid%20profile',
+        'refresh_token'" `${refreshToken}`
+    }
+  })
+        .then(response=>setData(response.data))
+        .catch(error=>setData(error.message))
+  }
 
   if (!authState) {
     return (
@@ -101,6 +121,11 @@ const Home = () => {
           </p>
           <p>
           <Button id="api-button" primary onClick={callProtectedAPi}>Get API Data</Button>
+          </p>
+          <div id="res-data"><pre>{JSON.stringify(data)}</pre>
+            </div>
+          <p>
+          <Button id="api-button" primary onClick={refreshToken}>Get API Data</Button>
           </p>
           <div id="res-data"><pre>{JSON.stringify(data)}</pre>
             </div>
