@@ -131,9 +131,9 @@ const Home = () => {
           <div id="res-data"><pre>{JSON.stringify(data)}</pre>
             </div>
           <p>
-          <Button id="api-button" primary onClick={refreshToken}>Get API Data</Button>
+          <Button id="refresh-token" primary onClick={refreshToken}>Refresh Token</Button>
           </p>
-          <div id="res-data"><pre>{JSON.stringify(data)}</pre>
+          <div id="token-data"><pre>{JSON.stringify(data)}</pre>
             </div>
         </div>
         )}
