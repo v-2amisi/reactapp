@@ -74,13 +74,13 @@ const Home = () => {
   const refreshToken = authState.refreshToken?authState.refreshToken.refreshToken:"";
     
   const params = new URLSearchParams()
-  params.append('client_id': '0oa1hwgaurigdH8sB0h8')
-  params.append('accept': 'application/json')
-  params.append('content-type': 'application/x-www-form-urlencoded')
-  params.append('redirect_uri': 'https://reactsampleappdt.herokuapp.com/okta-hosted-login/login/callback')
-  params.append('scope': 'offline_access%20openid%20profile')
-  params.append('refresh_token' `${refreshToken}`)
-  params.append('grant_type': 'refresh_token')
+  params.append('client_id', '0oa1hwgaurigdH8sB0h8')
+  params.append('accept', 'application/json')
+  params.append('content-type', 'application/x-www-form-urlencoded')
+  params.append('redirect_uri', 'https://reactsampleappdt.herokuapp.com/okta-hosted-login/login/callback')
+  params.append('scope', 'offline_access%20openid%20profile')
+  params.append('refresh_token', `${refreshToken}`)
+  params.append('grant_type', 'refresh_token')
     
   const config = {
     headers: {
