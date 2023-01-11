@@ -95,7 +95,7 @@ const Home = () => {
             You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID token and access token in local storage.
             Visit the
             {' '}
-            <a href="/profile">My Profile</a>
+            <a href="/okta-hosted-login/profile">My Profile</a>
             {' '}
             page to take a look inside the ID token.
           </p>
