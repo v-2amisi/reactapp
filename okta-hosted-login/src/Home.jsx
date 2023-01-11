@@ -72,19 +72,25 @@ const Home = () => {
   
   async function refreshToken(){
   const refreshToken = authState.refreshToken?authState.refreshToken.refreshToken:"";
+    
+  const params = new URLSearchParams()
+  params.append('client_id': '0oa1hwgaurigdH8sB0h8')
+  params.append('accept': 'application/json')
+  params.append('content-type': 'application/x-www-form-urlencoded')
+  params.append('redirect_uri': 'https://reactsampleappdt.herokuapp.com/okta-hosted-login/login/callback')
+  params.append('scope': 'offline_access%20openid%20profile')
+  params.append('refresh_token' `${refreshToken}`)
+  params.append('grant_type': 'refresh_token')
+    
+  const config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'  
+    }
+  }
+    
 
   
-   const response=  await axios.post("https://discounttire-dev.oktapreview.com/oauth2/auss0d6l6zGni1PNd0h7/v1/token",{
-    headers:{
-        'clientId': '0oa1hwgaurigdH8sB0h8',
-        'accept': 'application/json',
-        'content-type': 'application/x-www-form-urlencoded',
-        'grant-type': 'refresh_token',
-        'redirect_uri': 'https://reactsampleappdt.herokuapp.com/okta-hosted-login/login/callback',
-        'scope': 'offline_access%20openid%20profile',
-        'refresh_token'" `${refreshToken}`
-    }
-  })
+   const response=  await axios.post("https://discounttire-dev.oktapreview.com/oauth2/auss0d6l6zGni1PNd0h7/v1/token", params, config)
         .then(response=>setData(response.data))
         .catch(error=>setData(error.message))
   }
